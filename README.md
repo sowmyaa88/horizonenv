@@ -263,7 +263,7 @@ curl -X POST http://localhost:8000/step \
 
 ---
 
-## Training Pipeline (Future Work)
+## Training Pipeline 
 
 HorizonEnv is designed as a training environment, not just a benchmark:
 
