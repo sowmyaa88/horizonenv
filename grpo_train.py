@@ -219,6 +219,13 @@ trainer = GRPOTrainer(
     train_dataset=dataset,
 )
 
+# Unsloth's compiled GRPOTrainer expects vision-model attributes
+# (image_token_id / vision_start_token_id / vision_end_token_id) even for
+# text-only models. Set them to None if missing to avoid AttributeError.
+for _attr in ("image_token_id", "vision_start_token_id", "vision_end_token_id"):
+    if not hasattr(trainer, _attr):
+        setattr(trainer, _attr, None)
+
 
 if __name__ == "__main__":
     trainer.train()
